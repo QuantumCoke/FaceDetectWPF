@@ -1,0 +1,68 @@
+# Build output
+bin/
+obj/
+out/
+
+# Visual Studio directories
+.vs/
+.vscode/
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# MonoDevelop/Xamarin
+*.userprefs
+
+# Visual Studio cache/options
+*.cache
+*.dbmdl
+
+# Visual Studio temporary files
+~$*
+*.tmp
+*.log
+*.tlog
+*.lastbuildstate
+
+# NuGet packages and caches
+*.nupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+# EF Core Migrations snapshot
+**/Migrations/*.Designer.cs
+
+# IIS Express
+/.vs/**/ApplicationHost.config
+/.vs/**/iissettings.json
+
+# Publish profiles
+PublishProfiles/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# StyleCop
+StyleCopReport.xml
+
+# Coverage results
+coverage.*
+
+# Temporary WPF designer files
+*.g.cs
+*.g.i.cs
+*.g.resources
