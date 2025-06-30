@@ -5,7 +5,25 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AprProblem.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-            Unloaded="{Binding StopCommand}">
-    <Image Source="{Binding CurrentFrame}" Stretch="Uniform"/>
+      d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0"
+           Source="{Binding CurrentFrame}"
+           Stretch="Uniform"
+           Margin="5"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Content="Start" 
+              Command="{Binding StartCommand}" 
+              Width="100" Margin="5"/>
+            <Button Content="Stop"  
+              Command="{Binding StopCommand}"  
+              Width="100" Margin="5"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

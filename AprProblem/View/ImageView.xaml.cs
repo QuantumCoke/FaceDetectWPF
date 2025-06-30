@@ -1,17 +1,14 @@
 ﻿using System.Windows.Controls;
-using AprProblem.ViewModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
-namespace AprProblem.View
+namespace AprProblem.View;
+
+/// <summary>
+/// ImageView.xaml에 대한 상호 작용 논리
+/// </summary>
+public partial class ImageView : UserControl
 {
-    /// <summary>
-    /// ImageView.xaml에 대한 상호 작용 논리
-    /// </summary>
-    public partial class ImageView : UserControl
+    public ImageView()
     {
-        public ImageView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

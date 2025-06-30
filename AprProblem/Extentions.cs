@@ -1,7 +1,6 @@
-﻿using AprProblem.ViewModel;
+﻿using System.Windows;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
 
 namespace AprProblem;
 

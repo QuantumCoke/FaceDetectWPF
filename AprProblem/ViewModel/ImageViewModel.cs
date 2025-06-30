@@ -8,11 +8,17 @@ using OpenCvSharp;
 
 namespace AprProblem.ViewModel;
 
-public partial class ImageViewModel : ObservableObject
+public partial class ImageViewModel : baseViewModel
 {
+    /// <summary>
+    /// 로드된 이미지 정보
+    /// </summary>
     [ObservableProperty]
     private BitmapImage? _loadedImage;
 
+    /// <summary>
+    /// 이미지 버튼 클릭
+    /// </summary>
     [RelayCommand]
     private void ImageClicked()
     {
@@ -28,14 +34,14 @@ public partial class ImageViewModel : ObservableObject
             if (dlg.ShowDialog() != true)
                 return;
 
-            var faces = FrontalRudolphHelper.DetectFaceFromImg(dlg.FileName);
+            var faces = RudolphNoseHelper.DetectFaceFromImg(dlg.FileName);
 
             var frame = Cv2.ImRead(dlg.FileName);
 
             for (int i = 0; i < faces.Count; i++)
             {
-                var rudolghNose = FrontalRudolphHelper.GetResizedNoseMat(faces[i].mouseLength);
-                FrontalRudolphHelper.OverlayWithAlpha(frame, rudolghNose, faces[i].nosePosition);
+                var rudolghNose = RudolphNoseHelper.GetResizedNoseMat(faces[i].mouseLength);
+                RudolphNoseHelper.OverlayWithAlpha(frame, rudolghNose, faces[i].nosePosition);
             }
 
             LoadedImage = MatToBitmapImage(frame);
@@ -44,24 +50,5 @@ public partial class ImageViewModel : ObservableObject
         {
             System.Diagnostics.Debug.WriteLine($"Unexpected error: {ex}");
         }
-    }
-
-    private BitmapImage MatToBitmapImage(Mat mat)
-    {
-        mat.ThrowIfDisposed();
-        mat = mat.CvtColor(ColorConversionCodes.BGR2BGRA);
-
-        Cv2.ImEncode(".png", mat, out byte[] imgBytes);
-
-        var bmp = new BitmapImage();
-        using (var ms = new MemoryStream(imgBytes))
-        {
-            bmp.BeginInit();
-            bmp.CacheOption = BitmapCacheOption.OnLoad;
-            bmp.StreamSource = ms;
-            bmp.EndInit();
-            bmp.Freeze();
-        }
-        return bmp;
     }
 }

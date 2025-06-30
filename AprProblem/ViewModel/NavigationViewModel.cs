@@ -10,14 +10,20 @@ namespace AprProblem.ViewModel;
 public partial class NavigationViewModel : ObservableObject
 
 {
+    /// <summary>
+    /// 메뉴
+    /// </summary>
     [ObservableProperty]
     private ObservableCollection<NavigationItem> _itemList;
 
+    /// <summary>
+    /// 선택된 뷰
+    /// </summary>
     [ObservableProperty]
     private object? _selectedItem;
 
     /// <summary>
-    /// 선택된 NavigationItem을 추적하는 프로퍼티
+    /// 선택된 NavigationItem
     /// </summary>
     [ObservableProperty]
     private NavigationItem? _selectedNavigationItem;
@@ -43,6 +49,10 @@ public partial class NavigationViewModel : ObservableObject
         SelectedNavigationItem = ItemList.FirstOrDefault();
     }
 
+    /// <summary>
+    /// SelectedNavigationItem이 바뀔때 마다 호출되는 메서드
+    /// </summary>
+    /// <param name="value"></param>
     partial void OnSelectedNavigationItemChanged(NavigationItem? value)
     {
         if (value != null)
@@ -51,6 +61,10 @@ public partial class NavigationViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// type에 맞는 view 리턴 메서드
+    /// </summary>
+    /// <param name="item"></param>
     private void UpdateSelectedView(NavigationItem item)
     {
         SelectedItem = item.ViewType switch
@@ -62,6 +76,9 @@ public partial class NavigationViewModel : ObservableObject
     }
 }
 
+/// <summary>
+/// 네이게이션 정보
+/// </summary>
 public class NavigationItem : ObservableObject
 {
     public string? Title { get; set; }

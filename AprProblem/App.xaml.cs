@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using AprProblem.Helper;
 using AprProblem.View;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
@@ -12,6 +11,10 @@ public partial class App : Application
 {  
     AppBootstrapper bootstrapper = new();
 
+    /// <summary>
+    /// 앱 시작 셋업
+    /// </summary>
+    /// <param name="e"></param>
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
